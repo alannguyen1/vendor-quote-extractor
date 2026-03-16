@@ -1,0 +1,78 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Data
+data/uploads/
+data/
+data/*.db
+*.sqlite
+*.sqlite3
+
+# Public release workflow
+private_samples/
+sample_inputs/
+sample_outputs/
+public-export/
+tests/fixtures/private/
+tests/fixtures/tmp/
+tests/fixtures/.render-cache/
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+.ruff_cache/
+.pyright/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+*.pyc
+
+# FewWord context plugin
+.fewword/scratch/
+.fewword/index/

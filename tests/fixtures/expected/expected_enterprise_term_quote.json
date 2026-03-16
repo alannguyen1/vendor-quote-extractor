@@ -1,0 +1,62 @@
+{
+  "quote_id": "ETQ-2024-1001",
+  "vendor_name": "Bluewave Software",
+  "customer_name": "Global Retail Group",
+  "quote_date": "2024-11-01",
+  "valid_until": "2024-12-31",
+  "payment_terms": "Net 45",
+  "currency": "USD",
+  "amounts": {
+    "subtotal": 143391.6,
+    "tax": 0.0,
+    "grand_total": 143391.6
+  },
+  "line_items": [
+    {
+      "line_number": 1,
+      "description": "Enterprise Platform Subscription",
+      "sku": "ENT-PLATFORM",
+      "quantity": 5,
+      "unit_price": 19878.32,
+      "extended_price": 99391.6,
+      "item_type": "software",
+      "manufacturer": null,
+      "term_months": 60,
+      "taxable": null
+    },
+    {
+      "line_number": 2,
+      "description": "Premium Support Package",
+      "sku": "SUPPORT-PREM",
+      "quantity": 5,
+      "unit_price": 4000.0,
+      "extended_price": 20000.0,
+      "item_type": "services",
+      "manufacturer": null,
+      "term_months": 60,
+      "taxable": null
+    },
+    {
+      "line_number": 3,
+      "description": "Implementation Services",
+      "sku": "SERV-IMPL",
+      "quantity": 1,
+      "unit_price": 24000.0,
+      "extended_price": 24000.0,
+      "item_type": "services",
+      "manufacturer": null,
+      "term_months": null,
+      "taxable": null
+    }
+  ],
+  "notes": [
+    "Coverage period runs from 2024-11-22 to 2029-11-21.",
+    "Subscription term is implied by the coverage dates rather than a separate month count field."
+  ],
+  "extra_fields": {
+    "coverage_start": "2024-11-22",
+    "coverage_end": "2029-11-21",
+    "subscription_term_months": "60",
+    "auto_renew": "true"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "quote_id": "SOC-2024-0789",
+  "vendor_name": "Cedar Managed Services",
+  "customer_name": "Beacon Financial Group",
+  "quote_date": "2024-03-15",
+  "valid_until": "2024-04-15",
+  "payment_terms": "Net 60",
+  "currency": "USD",
+  "amounts": {
+    "subtotal": 597312.0,
+    "tax": 0.0,
+    "grand_total": 597312.0,
+    "net_amount_due": 552012.0,
+    "nrc_total": 45300.0
+  },
+  "line_items": [
+    {
+      "line_number": 1,
+      "description": "Managed Network Services - 36 Month",
+      "sku": "MNS-36M",
+      "quantity": 36,
+      "unit_price": 12000.0,
+      "extended_price": 432000.0,
+      "item_type": "services",
+      "manufacturer": null,
+      "term_months": 36,
+      "taxable": null
+    },
+    {
+      "line_number": 2,
+      "description": "Core Compute Infrastructure",
+      "sku": "CORE-INFRA",
+      "quantity": 1,
+      "unit_price": 165312.0,
+      "extended_price": 165312.0,
+      "item_type": "hardware",
+      "manufacturer": "Northwind Compute",
+      "term_months": null,
+      "taxable": null
+    },
+    {
+      "line_number": 3,
+      "description": "Initial Setup and Migration NRC",
+      "sku": "NRC-SETUP",
+      "quantity": 1,
+      "unit_price": 45300.0,
+      "extended_price": 45300.0,
+      "item_type": "services",
+      "manufacturer": null,
+      "term_months": null,
+      "taxable": null
+    },
+    {
+      "line_number": 4,
+      "description": "Trade-In Credit",
+      "sku": "CREDIT-TRADE",
+      "quantity": 1,
+      "unit_price": 45300.0,
+      "extended_price": -45300.0,
+      "item_type": "credit",
+      "manufacturer": null,
+      "term_months": null,
+      "taxable": null
+    }
+  ],
+  "notes": [
+    "Total Contract Value should be treated as the grand total.",
+    "The net amount due is shown separately after applying the trade-in credit."
+  ],
+  "extra_fields": {
+    "subscription_term_months": "36",
+    "net_amount_due": "552012.00"
+  }
+}

@@ -1,0 +1,22 @@
+# Streamlit Cloud configuration for demo deployment
+
+[server]
+# Maximum upload file size in MB (demo constraint)
+maxUploadSize = 10
+# Maximum message size in MB
+maxMessageSize = 50
+
+[theme]
+# Clean, professional theme
+primaryColor = "#0066cc"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f5f5f5"
+textColor = "#262730"
+
+[browser]
+# Collect usage stats (disabled for privacy)
+gatherUsageStats = false
+
+[runner]
+# Magic commands for hot reloading during development
+magicEnabled = true

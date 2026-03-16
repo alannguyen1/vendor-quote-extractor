@@ -1,0 +1,111 @@
+# GitHub Actions CI Workflow for Vendor Quote Extractor
+# Runs on push to main and on pull requests
+# Why: Ensures code quality gates (tests, lint, typecheck) pass before merge
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    name: Lint & Format Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install ruff
+        run: pip install ruff
+
+      - name: Run ruff lint
+        run: ruff check src/ config/ tests/
+
+      - name: Run ruff format check
+        run: ruff format src/ config/ tests/ --check
+
+  typecheck:
+    name: Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run pyright
+        run: pyright src/
+
+  test:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run unit tests
+        run: pytest -v --ignore=tests/test_pipeline.py -m "not integration"
+        env:
+          # Minimal env vars for unit tests (no real API calls)
+          LLM_PROVIDER: openai
+          LLM_MODEL: gpt-4o-2024-08-06
+          OPENAI_API_KEY: sk-test-not-real
+          ANTHROPIC_API_KEY: sk-ant-test-not-real
+          MAX_FILE_SIZE_MB: "10"
+          PROCESSING_TIMEOUT_SECONDS: "15"
+          CONFIDENCE_THRESHOLD: "0.90"
+
+  integration:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    # Integration tests are expensive (real API calls) - only run on main branch push
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: [lint, typecheck, test]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run integration tests
+        run: pytest -v -m integration
+        env:
+          LLM_PROVIDER: openai
+          LLM_MODEL: gpt-4o-2024-08-06
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MAX_FILE_SIZE_MB: "10"
+          PROCESSING_TIMEOUT_SECONDS: "15"
+          CONFIDENCE_THRESHOLD: "0.90"

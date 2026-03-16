@@ -1,0 +1,57 @@
+{
+  "quote_id": "MCQ-2024-0001",
+  "vendor_name": "Northwind Systems",
+  "customer_name": "Acme Retail Group",
+  "quote_date": "2024-01-15",
+  "valid_until": "2024-02-15",
+  "payment_terms": "Net 30",
+  "currency": "USD",
+  "amounts": {
+    "subtotal": 30800.0,
+    "tax": 1398.0,
+    "grand_total": 32198.0
+  },
+  "line_items": [
+    {
+      "line_number": 1,
+      "description": "Switch Core 48-Port",
+      "sku": "SW-CORE-48",
+      "quantity": 4,
+      "unit_price": 5500.0,
+      "extended_price": 22000.0,
+      "item_type": "hardware",
+      "manufacturer": "Northwind Systems",
+      "term_months": null,
+      "taxable": true
+    },
+    {
+      "line_number": 2,
+      "description": "Network License 3-Year",
+      "sku": "LIC-NET-3Y",
+      "quantity": 4,
+      "unit_price": 1200.0,
+      "extended_price": 4800.0,
+      "item_type": "software",
+      "manufacturer": "Northwind Systems",
+      "term_months": 36,
+      "taxable": true
+    },
+    {
+      "line_number": 3,
+      "description": "Implementation Services",
+      "sku": "SERV-INSTALL",
+      "quantity": 1,
+      "unit_price": 4000.0,
+      "extended_price": 4000.0,
+      "item_type": "services",
+      "manufacturer": null,
+      "term_months": null,
+      "taxable": true
+    }
+  ],
+  "notes": [
+    "This quote includes hardware, software, and services in a single table.",
+    "Tax is included in the finance total, while shipping is zero."
+  ],
+  "extra_fields": {}
+}
