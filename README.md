@@ -12,6 +12,14 @@ The public release ships with a fully synthetic fixture suite. No challenge docu
 - Validates arithmetic, totals, credits, dates, and confidence signals
 - Presents a review-friendly Streamlit UI with PDF preview and JSON export
 
+## Product Goals
+
+The public release is designed around three operating goals:
+
+- High accuracy on finance-critical fields, with an aspirational target of `95%+` correctness on key outputs such as grand total, line items, and vendor metadata
+- Human-in-the-loop safety, so low-confidence outputs, ambiguous totals, credits, and validation mismatches are routed to review instead of silently accepted
+- Faster than `20 seconds` end-to-end ingestion for supported documents, with typical digital PDFs expected to complete materially faster than the upper bound
+
 ## Architecture
 
 The extraction flow has three stages:
@@ -134,13 +142,36 @@ The generator also refreshes JSON summaries in `tests/fixtures/expected/`.
 
 ## Benchmarking
 
-You can compare providers against the synthetic fixture set with:
+The repository includes a benchmark harness used during development to compare providers, model choices, and extraction behavior against the synthetic fixture suite.
+
+What it measures:
+
+- End-to-end processing time per fixture
+- Parse, extract, and validate timing breakdowns
+- Grand total agreement against expected synthetic outputs
+- Line-item extraction counts per document
+- Success and failure rates across the suite
+
+Why it matters:
+
+- It keeps the speed target explicit: stay under the `20 second` ingestion ceiling for supported documents
+- It keeps the quality target explicit: push toward `95%+` accuracy on important finance fields
+- It supports the human-in-the-loop operating model by making it easy to see when validation, confidence, or provider behavior degrades
+- It helps tune routing, prompt budgets, chunking behavior, and fallback order
+
+Run the benchmark suite with:
 
 ```bash
 python benchmark_providers.py
 ```
 
 This script requires whichever provider keys you want to benchmark.
+
+Benchmark notes:
+
+- The public repository uses synthetic fixtures only
+- Results will vary by provider availability, model version, account limits, and network conditions
+- The README intentionally avoids hard-coded public leaderboard claims; rerun the benchmark in your own environment to establish current numbers
 
 ## Deployment
 
